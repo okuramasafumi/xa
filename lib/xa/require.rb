@@ -1,19 +1,20 @@
 # frozen_string_literal: true
 
 module Xa
-  # A proxy class to store data from DSL
-  class SubclassProxy
-    def initialize(klass)
-      @klass = klass
+  # The argument class for `subclasses` DSL
+  class Require
+    attr_reader :method_names, :variable_names
+
+    def initialize(implementing)
+      @method_names = implementing.method_names
     end
 
     # Declare subclasses require certain conditions
-    def require(conditions)
+    def trace!(current_class)
       TracePoint.trace :end do |tp|
         klass = tp.self
-        next unless target?(klass)
+        next unless target?(klass, current_class)
 
-        method_names = Array(conditions[:method])
         unless method_names.all? { |name| klass.instance_methods.include?(name) }
           raise Xa::Error, "#{klass.name} is required to implement #{method_names.join(", ")}"
         end
@@ -22,8 +23,8 @@ module Xa
 
     private
 
-    def target?(klass)
-      klass.name != @klass.name && klass.ancestors.include?(@klass)
+    def target?(klass, current_class)
+      klass.name != current_class.name && klass.ancestors.include?(current_class)
     end
   end
 end

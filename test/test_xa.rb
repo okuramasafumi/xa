@@ -8,7 +8,7 @@ class TestXa < Minitest::Test
   end
 
   class C1
-    subclasses need implementing(:m1, :m2)
+    xa { subclasses require implementing(:m1, :m2) }
   end
 
   def test_it_does_not_raise_exception_when_required_methods_are_implemented
