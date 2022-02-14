@@ -13,3 +13,10 @@ class Class
     Xa::Evaluator.new(self).instance_eval(&block)
   end
 end
+
+# Open class for Module
+class Module
+  def xa(&block)
+    Xa::Evaluator.new(self).instance_eval(&block)
+  end
+end

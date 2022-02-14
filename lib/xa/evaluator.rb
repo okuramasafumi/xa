@@ -13,6 +13,7 @@ module Xa
     def subclasses(require)
       require.trace!(@current_class)
     end
+    alias includers subclasses
 
     def require(implementing)
       Require.new(implementing)
