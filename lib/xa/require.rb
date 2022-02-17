@@ -3,7 +3,7 @@
 module Xa
   # The argument class for `subclasses` DSL
   class Require
-    attr_reader :method_names, :variable_names
+    attr_reader :method_names
 
     def initialize(implementing)
       @method_names = implementing.method_names
