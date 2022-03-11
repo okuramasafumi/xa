@@ -3,10 +3,8 @@
 module Xa
   # The argument class for `subclasses` DSL
   class Require
-    attr_reader :method_names
-
     def initialize(implementing)
-      @method_names = implementing.method_names
+      @implementing = implementing
     end
 
     # Declare subclasses require certain conditions
@@ -15,9 +13,7 @@ module Xa
         klass = tp.self
         next unless target?(klass, current_class)
 
-        unless method_names.all? { |name| klass.instance_methods.include?(name) }
-          raise Xa::Error, "#{klass.name} is required to implement #{method_names.join(", ")}"
-        end
+        @implementing.check_implementation(klass)
       end
     end
 

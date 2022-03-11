@@ -19,8 +19,8 @@ module Xa
       Require.new(implementing)
     end
 
-    def implementing(*method_names)
-      Implementing.new(method_names)
+    def implementing(*method_names, **options)
+      Implementing.new(method_names, **options)
     end
   end
 end
