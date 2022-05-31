@@ -1,8 +1,10 @@
+inherit_gem:
+  rubocop-sensible: 'config/rubocop.yml'
+
 require:
   - rubocop-minitest
   - rubocop-performance
   - rubocop-rake
-  - rubocop-sensible
 
 AllCops:
   TargetRubyVersion: 2.6
