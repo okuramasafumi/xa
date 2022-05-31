@@ -1,5 +1,11 @@
+---
+
 inherit_gem:
   rubocop-sensible: 'config/rubocop.yml'
+
+inherit_mode:
+  merge:
+    - Exclude
 
 require:
   - rubocop-minitest
