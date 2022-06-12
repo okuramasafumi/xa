@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require_relative "test_helper"
 
 class TestInitialize < Minitest::Test
   def test_it_does_not_raise_exception_when_required_methods_are_implemented
