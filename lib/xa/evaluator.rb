@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "implementing"
-require_relative "require"
+require_relative "verbs/implement"
+require_relative "verbs/must"
 
 module Xa
   # Receiver of `instance_eval`
@@ -15,12 +15,12 @@ module Xa
     end
     alias includers subclasses
 
-    def require(implementing)
-      Require.new(implementing)
+    def must(verb)
+      Must.new(verb)
     end
 
-    def implementing(*method_names, **options)
-      Implementing.new(method_names, **options)
+    def implement(*method_names, **options)
+      Implement.new(method_names, **options)
     end
   end
 end

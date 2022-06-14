@@ -2,9 +2,9 @@
 
 module Xa
   # The argument class for `subclasses` DSL
-  class Require
-    def initialize(implementing)
-      @implementing = implementing
+  class Must
+    def initialize(verb)
+      @verb = verb
     end
 
     # Declare subclasses require certain conditions
@@ -13,7 +13,7 @@ module Xa
         klass = tp.self
         next unless target?(klass, current_class)
 
-        @implementing.check_implementation(klass)
+        @verb.check_implementation(klass)
       end
     end
 

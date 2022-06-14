@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "missing_implementation"
+require_relative "../missing_implementation"
 
 using Module.new { # rubocop:disable Lint/AmbiguousBlockAssociation
   refine RubyVM::AbstractSyntaxTree::Node do
@@ -15,7 +15,7 @@ using Module.new { # rubocop:disable Lint/AmbiguousBlockAssociation
 
 module Xa
   # Containing implementation requirements
-  class Implementing
+  class Implement
     def initialize(method_names, **options)
       @method_names = method_names
       @calling = options[:calling]
