@@ -10,8 +10,8 @@ module Xa
       @current_class = current_class
     end
 
-    def subclasses(require)
-      require.trace!(@current_class)
+    def subclasses(must)
+      must.trace!(@current_class)
     end
     alias includers subclasses
 
