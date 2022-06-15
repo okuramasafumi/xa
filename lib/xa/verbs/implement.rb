@@ -22,13 +22,13 @@ module Xa
     end
 
     def check_implementation(klass)
-      missings = @method_names.map do |name|
+      missings = @method_names.filter_map do |name|
         if !klass.instance_methods.include?(name) && !klass.private_instance_methods.include?(name)
           MissingImplementation.new(klass: klass, kind: :missing, name: name)
         elsif missing_method_call(klass, name)
           MissingImplementation.new(klass: klass, kind: :missing_call, name: name, missed_call: @calling)
         end
-      end.compact
+      end
 
       raise Xa::Error, missings.map(&:message).join unless missings.empty?
     end
