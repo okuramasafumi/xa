@@ -30,7 +30,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use `xa` block to write annotations in natural language.
+
+```ruby
+class Parent
+  xa { subclasses must implement m1 }
+end
+
+class Child < Parent
+end
+# => Error because Child doesn't implement m1
+
+class Correct < Parent
+  def m1; end
+end
+# => This is OK
+```
 
 ## Development
 
